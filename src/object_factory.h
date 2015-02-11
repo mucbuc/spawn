@@ -25,9 +25,7 @@
 	#define _object_factory_H_89033300
 
 #include <map>
-#include "componentsfwd.h"
 #include "createfwd.h"
-#include "typetraits.h"
 
 namespace om636
 {
@@ -40,8 +38,8 @@ namespace om636
 		typedef T key_type;
 		typedef F functor_type;
 		typedef E error_policy;
-        //typedef typename om636::type_traits< functor_type >::return_type return_type;
-		typedef typename functor_type::return_type return_type;
+
+		typedef typename functor_type::result_type result_type;
         typedef map< key_type, functor_type > map_type;
 		typedef typename map_type::iterator iterator_type;
 		typedef typename map_type::const_iterator const_iterator;
@@ -50,7 +48,7 @@ namespace om636
 		bool register_create( const key_type &, const functor_type&);		
 		bool unregister_create( const key_type & );
 		
-		virtual return_type create( const key_type & ) const;
+		virtual result_type create( const key_type & ) const;
 		
 	private:	
 		map_type _creator;

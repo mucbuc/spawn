@@ -21,14 +21,14 @@ namespace om636
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T, class F, class E>
-	typename object_factory<T, F, E>::return_type object_factory<T, F, E>::create( const key_type & id ) const
+	auto object_factory<T, F, E>::create( const key_type & id ) const -> result_type
 	{
 		const_iterator i( _creator.find( id ) );
 		if (i != _creator.end())
 			return (i->second)();	
 		
 		//error_policy();
-		return return_type();
+		return result_type();
 	}
 	
 } // om636

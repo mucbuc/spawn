@@ -1,20 +1,30 @@
 #include <iostream>
+#include <functional>
+#include <string>
 
-/*
+#include "../plank/src/test.h"
+#include "../../src/object_factory.h"
+
+const char * fuck_you()
+{
+	static std::string local( "hello" ); 
+	return local.c_str();
+}
 
 void run_test() 
 {
-	typedef functor< dynamic_policy< char*(*)() > > functor_type;
-	functor_type create( &fuck_you );		
-	object_factory< int, functor_type > of;
-	of.register_create( 3, create );
-	cout << string( of.create( 3 ) ) << std::endl; 
-}
+	using namespace std;
+	typedef function< const char * () > functor_type;
+	
+	functor_type create( & fuck_you );		
+	om636::object_factory< int, functor_type > off;
+	off.register_create( 3, create );
 
-*/
+	ASSERT( ! strcmp(off.create( 3 ), "hello") );
+}
 
 int main(int argc, const char * argv[])
 {
-	std::cout << "mofo" << std::endl;
+	run_test();
 	return 0;
 }
