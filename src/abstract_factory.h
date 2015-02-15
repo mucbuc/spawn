@@ -1,31 +1,39 @@
-#ifndef _abstract_factory_H_kjh32lkjh
-	#define _abstract_factory_H_kjh32lkjh
-
-#include "typetree.h"
+#ifndef ABSTRACT_FACTOR_H_56353YHTDHDF
+	#define ABSTRACT_FACTOR_H_56353YHTDHDF
 
 namespace om636
 {
-    
     template<class T> 
-    struct abstract_unit
+    struct type_to_type
+    {};
+    
+    template<class T, class ... U>
+    struct abstract_unit<T, U ...>
+    : abstract_unit<T>
+    , abstract_unit<U ...>
     {
-        virtual T * do_create( om636::type_to_type<T> ) = 0;
-        virtual ~abstract_unit() {}
+        virtual ~abstract_unit() = default;
     };
 
-    template< class T, template<class> class U >
+    template<class T> 
+    struct abstract_unit<T>
+    {
+        virtual T * invoke_create( type_to_type<T> ) = 0;
+        virtual ~abstract_unit() = default;
+    };
+
+    template< template<class...> class U, class ... T >
     class abstract_factory
-        : public generate_scatter_hierarchy< T, U >
+        : public U< T ... >
     {
     public:
-        typedef T product_list; 
-        
+       
         template<class V> 
-        V * create(); 
+        V * create();
     };
     
 } // om636
 	
 #include "abstract_factory.hxx"
 
-#endif // _abstract_factory_H_kjh32lkjh
+#endif // ABSTRACT_FACTOR_H_56353YHTDHDF
