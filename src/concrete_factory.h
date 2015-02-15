@@ -1,5 +1,5 @@
-#ifndef _concrete_factory_H_eewgqwgjh
-	#define _concrete_factory_H_eewgqwgjh
+#ifndef CONCRETE_FACTORY_H_54654LKJ546L4
+	#define CONCRETE_FACTORY_H_54654LKJ546L4
 
 #include <tuple>
 
@@ -27,4 +27,4 @@ namespace om636
 	
 #include "concrete_factory.hxx"
 
-#endif // _concrete_factory_H_eewgqwgjh
+#endif // CONCRETE_FACTORY_H_54654LKJ546L4

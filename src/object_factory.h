@@ -21,8 +21,8 @@
                 and then call "read". 
 */
 
-#ifndef _object_factory_H_89033300
-	#define _object_factory_H_89033300
+#ifndef OBJECT_FACTORY_H_34LKJ532445345
+	#define OBJECT_FACTORY_H_34LKJ532445345
 
 #include <map>
 #include "createfwd.h"
@@ -62,4 +62,4 @@ namespace om636
 	
 #include "object_factory.hxx"
 
-#endif // _object_factory_H_89033300
+#endif // OBJECT_FACTORY_H_34LKJ532445345
