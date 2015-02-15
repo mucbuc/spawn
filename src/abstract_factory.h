@@ -27,9 +27,15 @@ namespace om636
         : public U< T ... >
     {
     public:
-        
+       
         template<class V> 
-        V * create(); 
+        V * create();
+
+        template< template<class, class ..., class ...> class V, class ... W >
+        struct concrete_factory
+        {
+            typedef V< abstract_factory, T ..., W ... > result_type;
+        };
     };
     
 } // om636

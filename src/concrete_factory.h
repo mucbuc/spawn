@@ -6,17 +6,29 @@
 
 namespace om636
 {
-    template<class T, class U> 
-    struct concrete_unit : public U
+    template<class T, template<class, class> class U, class ... V, class ... W> 
+    struct concrete_factory
+    : public
     {
-        typedef U base_type;
-        typedef T concrete_type; 
+
+    };
+
+
+    template<class T, class U, class ... V>
+    struct concrete_unit<T, U, V ... >
+    : concrete_unit<T, U>
+    : concrete_unit<T, V ... >
+    {
+
+    };
+
+    template<template<class> class T, class U> 
+    struct concrete_unit<T, U> 
+    : public T<U> 
+    {
+        typedef T<U> base_type; 
         
-        typedef typename base_type::product_list base_product_list;
-        typedef typename base_product_list::right_type product_list; 
-        typedef typename base_product_list::left_type abstract_type; 
-        
-        virtual concrete_type * do_create( om636::type_to_type<abstract_type> ) 
+        virtual concrete_type * do_create( om636::type_to_type<U> ) 
         {
             return new T(); 
         }
