@@ -1,49 +1,37 @@
 #ifndef _concrete_factory_H_eewgqwgjh
 	#define _concrete_factory_H_eewgqwgjh
 
-#include "typetree.h"
+#include <tuple>
+
 #include "createfwd.h"
 
 namespace om636
 {
-    template<class T, template<class, class> class U, class ... V, class ... W> 
-    struct concrete_factory
-    : public
-    {
-
-    };
-
-
-    template<class T, class U, class ... V>
-    struct concrete_unit<T, U, V ... >
-    : concrete_unit<T, U>
-    : concrete_unit<T, V ... >
-    {
-
-    };
-
-    template<template<class> class T, class U> 
-    struct concrete_unit<T, U> 
-    : public T<U> 
-    {
-        typedef T<U> base_type; 
-        
-        virtual concrete_type * do_create( om636::type_to_type<U> ) 
+    template<class T, class U, class V, class ... W> 
+    struct concrete_factory<T, std::tuple<U, V>, W ... >
+    : concrete_factory<T, W ... >
+    {   
+        virtual U * invoke_create(type_to_type<V>)
         {
-            return new T(); 
+            return new U;
         }
-        
-        virtual ~concrete_unit()
+
+        virtual ~concrete_factory()
         {}
     };
-    
-    template<class T, template<class, class> class U, class V>
-    class concrete_factory
-        : public generate_linear_hierarchy< T, U, V >
+
+    template<class T, class U, class V> 
+    struct concrete_factory<T, std::tuple<U, V> > 
+    : T
     {
-    public:
-        typedef T concrete_product_list; 
-        typedef V factory_type; 
+        virtual U * invoke_create(type_to_type<V>)
+        {
+            return new U;
+        }
+        virtual ~concrete_factory()
+        {
+
+        }
     };
     
 } // om636

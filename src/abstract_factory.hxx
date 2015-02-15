@@ -9,7 +9,7 @@ namespace om636
     V * abstract_factory< U, T ... >::create()
     {
         U< V > & unit( * this ); 
-        return unit.do_create( type_to_type<V>() ); 
+        return unit.invoke_create( type_to_type<V>() ); 
     }   
 } // om636
 

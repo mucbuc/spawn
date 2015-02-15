@@ -12,14 +12,14 @@ namespace om636
     : abstract_unit<T>
     , abstract_unit<U ...>
     {
-        virtual ~abstract_unit() {}
+        virtual ~abstract_unit() = default;
     };
 
     template<class T> 
     struct abstract_unit<T>
     {
-        virtual T * do_create( type_to_type<T> ) = 0;
-        virtual ~abstract_unit() {}
+        virtual T * invoke_create( type_to_type<T> ) = 0;
+        virtual ~abstract_unit() = default;
     };
 
     template< template<class...> class U, class ... T >
@@ -30,12 +30,6 @@ namespace om636
        
         template<class V> 
         V * create();
-
-        template< template<class, class ..., class ...> class V, class ... W >
-        struct concrete_factory
-        {
-            typedef V< abstract_factory, T ..., W ... > result_type;
-        };
     };
     
 } // om636

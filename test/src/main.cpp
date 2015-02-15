@@ -1,10 +1,12 @@
 #include <iostream>
 #include <functional>
 #include <string>
+#include <tuple>
 
 #include "../plank/src/test.h"
 #include "../../src/object_factory.h"
 #include "../../src/abstract_factory.h"
+#include "../../src/concrete_factory.h"
 
 const char * fuck_you()
 {
@@ -33,28 +35,20 @@ struct Abstract2
 {
 };
 
-struct Factory
-: public om636::abstract_factory< om636::abstract_unit, Abstract1, Abstract2 >
-{
-	Abstract1 * do_create( om636::type_to_type<Abstract1> )
-	{
-		return new Abstract1;
-	}
-
-	Abstract2 * do_create( om636::type_to_type<Abstract2> )
-	{
-		return new Abstract2;
-	}
-};
-
 int main(int argc, const char * argv[])
 {
 	using namespace om636;
 
 	run_test();
 
-	Factory factory;
-
+	typedef abstract_factory< om636::abstract_unit, Abstract1, Abstract2 > abstract_type;
+	typedef concrete_factory< 
+		abstract_type, 
+		std::tuple< Abstract1, Abstract1>,
+		std::tuple< Abstract2, Abstract2> > 
+	concrete_type;
+	
+	concrete_type factory; 
 	factory.create<Abstract1>();
 
 	return 0;
