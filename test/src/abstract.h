@@ -47,3 +47,18 @@ void test_abstract_factory()
 	
 	cout << "test_abstract_factory passed" << endl;
 }
+
+void test_abstract_factory2()
+{
+	using namespace om636;
+	using namespace std;
+
+	typedef abstract_factory< abstract_unit > abstract_type;
+	typedef concrete_factory< 
+		abstract_type
+	> concrete_type;
+
+	concrete_type factory; 
+	
+	cout << "test_abstract_factory passed" << endl;
+}

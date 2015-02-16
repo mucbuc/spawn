@@ -12,6 +12,7 @@ int main(int argc, const char * argv[])
 {
 	test_object_factory();
 	test_abstract_factory();
+	test_abstract_factory2();
 
 	return 0;
 }

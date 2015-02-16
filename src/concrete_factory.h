@@ -22,6 +22,12 @@ namespace om636
         virtual U * invoke_create(type_to_type<V>);
         virtual ~concrete_factory() = default;
     };
+
+    template<class T>
+    struct concrete_factory<T>
+    {
+        virtual ~concrete_factory() = default;
+    };
     
 } // om636
 	
