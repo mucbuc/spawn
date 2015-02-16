@@ -8,6 +8,10 @@ namespace om636
     template<class T> 
     struct type_to_type
     {};
+
+    template<class T, class U>
+    struct type_link
+    {};
     
     template<class T, class ... U>
     struct abstract_unit<T, U ...>

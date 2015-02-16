@@ -4,7 +4,7 @@ namespace om636
     // concrete_factory<T, std::tuple<U, V>, W ... >
     /////////////////////////////////////////////////////////////////////////////////////////////
     template<class T, class U, class V, class ... W> 
-    U * concrete_factory<T, std::tuple<U, V>, W ... >::invoke_create(type_to_type<V>)
+    U * concrete_factory<T, type_link<U, V>, W ... >::invoke_create(type_to_type<V>)
     {   
       	return new U;
     }
@@ -13,7 +13,7 @@ namespace om636
     // concrete_factory<T, std::tuple<U, V> > 
     /////////////////////////////////////////////////////////////////////////////////////////////
     template<class T, class U, class V> 
-	U * concrete_factory<T, std::tuple<U, V> >::invoke_create(type_to_type<V>)
+	U * concrete_factory<T, type_link<U, V> >::invoke_create(type_to_type<V>)
     {
         return new U;
     }

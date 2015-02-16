@@ -1,14 +1,12 @@
 #ifndef CONCRETE_FACTORY_H_54654LKJ546L4
 	#define CONCRETE_FACTORY_H_54654LKJ546L4
 
-#include <tuple>
-
-#include "createfwd.h"
+#include <lib/spawn/src/createfwd.h>
 
 namespace om636
 {
     template<class T, class U, class V, class ... W> 
-    struct concrete_factory<T, std::tuple<U, V>, W ... >
+    struct concrete_factory<T, type_link<U, V>, W ... >
     : concrete_factory<T, W ... >
     {   
         virtual U * invoke_create(type_to_type<V>);
@@ -16,7 +14,7 @@ namespace om636
     };
 
     template<class T, class U, class V> 
-    struct concrete_factory<T, std::tuple<U, V> > 
+    struct concrete_factory<T, type_link<U, V> > 
     : T
     {
         virtual U * invoke_create(type_to_type<V>);

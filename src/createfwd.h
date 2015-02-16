@@ -4,6 +4,8 @@
 namespace om636
 {
 	// abstract_factory.h
+	template<class> struct type_to_type;
+	template<class, class> struct type_link;
     template<class...> struct abstract_unit;
     template< template<class...> class, class ... > struct abstract_factory;
 	

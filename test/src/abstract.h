@@ -1,4 +1,3 @@
-#include <tuple>
 
 #include "lib/spawn/src/abstract_factory.h"
 #include "lib/spawn/src/concrete_factory.h"
@@ -37,8 +36,8 @@ void test_abstract_factory()
 	typedef abstract_factory< abstract_unit, Abstract1, Abstract2 > abstract_type;
 	typedef concrete_factory< 
 		abstract_type, 
-		tuple< Concrete1, Abstract1>,
-		tuple< Concrete2, Abstract2>
+		type_link< Concrete1, Abstract1>,
+		type_link< Concrete2, Abstract2>
 	> concrete_type;
 
 	concrete_type factory; 
