@@ -5,7 +5,7 @@ namespace om636
 {
 	// abstract_factory.h
     template<class...> struct abstract_unit;
-    template< template<class...> class, class ... > class abstract_factory;
+    template< template<class...> class, class ... > struct abstract_factory;
 	
     // concrete_factory.h
     template<class, class ... > struct concrete_factory;

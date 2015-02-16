@@ -1,6 +1,8 @@
 #ifndef ABSTRACT_FACTOR_H_56353YHTDHDF
 	#define ABSTRACT_FACTOR_H_56353YHTDHDF
 
+#include <lib/spawn/src/createfwd.h>
+
 namespace om636
 {
     template<class T> 
@@ -23,14 +25,16 @@ namespace om636
     };
 
     template< template<class...> class U, class ... T >
-    class abstract_factory
-        : public U< T ... >
+    struct abstract_factory
+    : U< T ... >
     {
-    public:
-       
         template<class V> 
         V * create();
     };
+
+    template< template<class...> class U >
+    struct abstract_factory<U>
+    {};
     
 } // om636
 	
