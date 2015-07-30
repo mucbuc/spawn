@@ -1,6 +1,4 @@
-build/
-*.xcodeproj/
-node_modules/
-test/lib/
 .DS_Store
-
+build.log
+build/
+node_modules/

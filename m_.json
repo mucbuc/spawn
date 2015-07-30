@@ -1,0 +1,8 @@
+{
+	"dependencies": [
+		{
+			"origin": "https://github.com/mucbuc/plank.git", 
+			"path": "test"
+		}
+	]
+}
