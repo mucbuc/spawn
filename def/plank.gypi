@@ -1,4 +1,7 @@
-{
+{	
+	'includes':[
+		'mac-targets.gypi'
+	],
     'target_defaults': {
     	'default_configuration': 'Test',
 		'configurations':{

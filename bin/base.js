@@ -10,15 +10,26 @@ assert( typeof copy === 'function' );
 
 function Base(program) {
 
+  this.readSuites = function(suite, cb) {
+    fs.readFile( suite, function(err, data) {
+      if (err) throw err; 
+      cb( JSON.parse( data.toString() ).tests );
+    });
+  }; 
+
   this.generate = function( o, cb ) {
 
-    makePathIfNone(program.output, function() {
+    assert( o.hasOwnProperty( 'output' ) );
+    assert( o.hasOwnProperty( 'testDir' ) );
+    assert( o.hasOwnProperty( 'defFile' ) );
 
-      var include = program.gcc ? 'plank/def/cpp11-gcc.gypi' : 'plank/def/cpp11.gypi';
-      var args = [
+    makePathIfNone(o.output, function() {
+
+      var include = program.gcc ? 'plank/def/cpp11-gcc.gypi' : 'plank/def/cpp11.gypi'
+        , args = [
           o.defFile,
           '--depth=' + (program.gcc ? './' : '.'),
-          '--generator-output=' + program.output,
+          '--generator-output=' + o.output,
           '--include=' + include  
         ];
 
@@ -32,10 +43,10 @@ function Base(program) {
         'gyp', 
         args, {
           stdio: 'inherit',
-          cwd: o.defDir
+          cwd: o.testDir
         })
       .on( 'close', function( code ) {
-        cb( code, program.output );
+        cb( code, o.output );
       });
     });
 
@@ -61,7 +72,7 @@ function Base(program) {
 
   this.build = function( o, cb ) {
     
-    readTargetName( o.defFile, program.path, function( targetName ) { 
+    readTargetName( o.defFile, o.testDir, function( targetName ) { 
 
       var child; 
       if (program.gcc) {
@@ -70,14 +81,14 @@ function Base(program) {
           [ '-j'],
           {
             stdio: 'inherit',
-            cwd: program.output
+            cwd: o.output
           }); 
       }
       else {
 
         var args = [
           "-project",
-          path.join( program.output, targetName + '.xcodeproj' )
+          path.join( o.output, targetName + '.xcodeproj' )
         ];
 
         console.log( args ); 
@@ -85,7 +96,7 @@ function Base(program) {
         child = cp.spawn( 
           'xcodebuild', 
           args, {
-            cwd: program.output,
+            cwd: o.output,
             stdio: 'inherit'
           } ); 
       }
@@ -118,12 +129,13 @@ function Base(program) {
 
   this.run = function( o, cb ) {
     var execPath;
+    
     if (program.gcc) {
       o.testDir = path.join( o.testDir, 'out' );
-      execPath = path.join( program.output, 'out/Test', o.target );
+      execPath = path.join( o.output, 'out/Test', o.target );
     }
     else 
-      execPath = path.join( program.output, 'Test', o.target );
+      execPath = path.join( o.output, 'Test', o.target );
 
     cp.spawn( 
       execPath, 
