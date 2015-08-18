@@ -24,6 +24,12 @@ var Printer = {
 		cursor.red();
 		console.timeEnd( msg1 );
 		cursor.reset();
+	}, 
+
+	printError: function( msg ) {
+		cursor.red(); 
+		console.log( msg ); 
+		cursor.reset();
 	}
 };
 

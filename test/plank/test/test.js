@@ -7,13 +7,14 @@ var assert = require( 'assert' )
   , controller = new Expector(); 
 
 controller.expect( 'built' ); 
-controller.expect( '\x1b[31mhello\x1b[39;49m\n' );
+controller.expect( 'hello\n' );
 
 cp
-.fork( path.join( __dirname, '/plank/bin/test.js' ) )
+.fork( path.join( __dirname, 'plank/bin/test.js' ) )
 .on( 'exit', function() {
 	controller.emit( 'built' );
-	cp.execFile( path.join( __dirname, '/build/Default/test' ), function(err, stdout, stderr) {
+	cp.execFile( path.join( __dirname, '/build/Test/test' ), function(err, stdout, stderr) {
+		if(err) throw err;
 		controller.emit( stdout );
 	} ); 
 });
