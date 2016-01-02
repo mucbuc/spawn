@@ -1,0 +1,8 @@
+{
+	"import":[
+		"lib/static/def.json"
+	],
+	"sources": [
+		"src/main.cpp"
+	]
+}

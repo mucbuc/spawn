@@ -1,0 +1,5 @@
+{
+	"test/lib" : [
+		"https://github.com/mucbuc/static.git"
+	]
+}

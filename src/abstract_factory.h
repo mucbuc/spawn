@@ -2,13 +2,10 @@
 	#define ABSTRACT_FACTOR_H_56353YHTDHDF
 
 #include <lib/spawn/src/createfwd.h>
+#include <lib/static/interface.h>
 
 namespace om636
 {
-    template<class T> 
-    struct type_to_type
-    {};
-
     template<class T, class U>
     struct type_link
     {};
