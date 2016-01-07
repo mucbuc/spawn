@@ -1,0 +1,8 @@
+{
+	"import":[
+		"../spawn.json"
+	],
+	"sources": [
+		"../test/src/main.cpp"
+	]
+}
