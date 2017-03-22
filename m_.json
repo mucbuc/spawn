@@ -1,5 +1,6 @@
 {
 	"test/lib" : [
+		"https://github.com/mucbuc/asserter.git",
 		"https://github.com/mucbuc/static.git"
 	]
 }
