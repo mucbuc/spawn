@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-#include "test.h"
+#include <tmp/src/test.h>
 #include "src/object.h"
 #include "src/abstract.h"
 
