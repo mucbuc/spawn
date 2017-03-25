@@ -1,4 +1,4 @@
 # spawn
 {abstract, concrete, object} factories. oh yeah, and singleton
 
-<!---DOC_HOOK_MOD_HEADER-->
+![doc header](https://s3-us-west-2.amazonaws.com/mod-resources/mod-header.svg)
