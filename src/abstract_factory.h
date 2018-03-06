@@ -1,5 +1,5 @@
-#ifndef ABSTRACT_FACTOR_H_56353YHTDHDF
-#define ABSTRACT_FACTOR_H_56353YHTDHDF
+#ifndef ABSTRACT_FACTORY_H_56353YHTDHDF
+#define ABSTRACT_FACTORY_H_56353YHTDHDF
 
 #include <lib/spawn/src/createfwd.h>
 #include <lib/static/interface.h>
@@ -36,4 +36,4 @@ struct abstract_factory<U> {
 
 #include "abstract_factory.hxx"
 
-#endif // ABSTRACT_FACTOR_H_56353YHTDHDF
+#endif // ABSTRACTY_FACTOR_H_56353YHTDHDF
