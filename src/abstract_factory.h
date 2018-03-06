@@ -36,4 +36,4 @@ struct abstract_factory<U> {
 
 #include "abstract_factory.hxx"
 
-#endif // ABSTRACTY_FACTOR_H_56353YHTDHDF
+#endif // ABSTRACT_FACTORY_H_56353YHTDHDF
