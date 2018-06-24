@@ -1,0 +1,5 @@
+{
+	"sources": [
+		"src/check_assert.cpp"
+	]
+}
