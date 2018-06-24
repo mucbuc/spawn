@@ -9,8 +9,5 @@
 		"src/object_factory.hxx",
 		"src/singleton.h",
 		"src/singleton.hxx"
-	],
-	"import": [ 
-		"lib/static/def.json"
 	]
 }

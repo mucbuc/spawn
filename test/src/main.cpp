@@ -1,16 +1,16 @@
-#include <iostream>
 #include <functional>
+#include <iostream>
 #include <string>
 
-#include "test.h"
-#include "src/object.h"
 #include "src/abstract.h"
+#include "src/object.h"
+#include <tmp/src/test.h>
 
-int main(int argc, const char * argv[])
+int main(int argc, const char* argv[])
 {
-	test_object_factory();
-	test_abstract_factory();
-	test_abstract_factory2();
+    test_object_factory();
+    test_abstract_factory();
+    test_abstract_factory2();
 
-	return 0;
+    return 0;
 }

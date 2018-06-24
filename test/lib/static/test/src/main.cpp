@@ -1,10 +1,10 @@
 #include <iostream>
-#include "test.h"
 #include <lib/static/interface.h>
+#include <tmp/src/test.h>
 
-int main(int argc, const char * argv[])
+int main(int argc, const char* argv[])
 {
     using namespace om636;
-	empty_type e;
-	return 0;
+    empty_type e;
+    return 0;
 }
