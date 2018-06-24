@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 
+#include <tmp/src/test.h>
 #include "src/abstract.h"
 #include "src/object.h"
-#include <tmp/src/test.h>
 
 int main(int argc, const char* argv[])
 {
